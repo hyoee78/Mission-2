@@ -40,12 +40,11 @@ mission2-quiz/
 
 ## 실행 화면
 
-화면 캡처를 여기에 추가합니다. 현재 작업 실행 환경은 디스플레이 캡처를 제공하지 않아 아래 캡처 파일은 아직 생성되지 않았습니다.
+아래 이미지는 실제 프로그램 출력과 Git 로그를 SVG로 렌더링한 기록입니다. 이 실행 환경은 데스크톱 화면 캡처를 제공하지 않아 OS 스크린샷은 포함하지 않았습니다.
 
-- 메뉴: `docs/screenshots/menu.png`
-- 퀴즈 플레이와 힌트: `docs/screenshots/play.png`
-- 퀴즈 목록 및 점수: `docs/screenshots/list-score.png`
-- Git 이력: `docs/screenshots/git-log.png`
+- 메뉴, 문제 목록 및 점수: `docs/screenshots/menu-score.svg`
+- 퀴즈 플레이와 힌트: `docs/screenshots/play.svg`
+- Git 이력: `docs/screenshots/git-log.svg`
 
 ## Git 학습 기록
 
