@@ -163,6 +163,7 @@ class QuizGame:
             print("등록된 퀴즈가 없습니다.")
             return
         score = 0
+        missed_questions = []
         questions = list(self.quizzes)
         random.shuffle(questions)  # 보너스: 실행할 때마다 문제 순서를 섞습니다.
         print(f"\n퀴즈를 시작합니다! 총 {len(questions)}문제입니다.")
@@ -183,6 +184,7 @@ class QuizGame:
                     score += 1
                 else:
                     print(f"아쉽지만 오답입니다. 정답은 {quiz.answer}번입니다.")
+                    missed_questions.append(quiz)
                 break
         percent = round(score / len(questions) * 100)
         print(f"\n결과: {len(questions)}문제 중 {score}문제 정답 ({percent}점)")
@@ -191,6 +193,10 @@ class QuizGame:
         if score > self.best_score:
             self.best_score = score
             print("새로운 최고 점수입니다!")
+        if missed_questions:
+            print("\n복습할 문제:")
+            for quiz in missed_questions:
+                print(f"- {quiz.question} → {quiz.answer}. {quiz.choices[quiz.answer - 1]}")
         self.save_state()
 
     def add_quiz(self):

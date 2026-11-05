@@ -1,9 +1,11 @@
 """기본 데이터, 입력 검사 및 JSON 저장 동작을 확인합니다."""
 
 import json
+import io
 import tempfile
 import unittest
 from pathlib import Path
+from contextlib import redirect_stdout
 from unittest.mock import patch
 
 from main import Quiz, QuizGame, default_quizzes
@@ -53,6 +55,16 @@ class QuizTests(unittest.TestCase):
                     game = QuizGame(state_file)
                     self.assertEqual(len(game.quizzes), 5)
                     self.assertEqual(game.best_score, 0)
+
+    def test_wrong_answer_is_shown_in_review(self):
+        with tempfile.TemporaryDirectory() as directory:
+            game = QuizGame(Path(directory) / "state.json")
+            game.quizzes = default_quizzes()[:1]
+            output = io.StringIO()
+            with patch("builtins.input", return_value="4"), redirect_stdout(output):
+                game.play()
+            self.assertIn("복습할 문제", output.getvalue())
+            self.assertEqual(game.games_played, 1)
 
 
 if __name__ == "__main__":
