@@ -33,6 +33,7 @@ class QuizTests(unittest.TestCase):
             self.assertEqual(len(reloaded.quizzes), 6)
             saved = json.loads(state_file.read_text(encoding="utf-8"))
             self.assertEqual(saved["best_score"], 4)
+            self.assertFalse(state_file.with_name("state.json.tmp").exists())
 
     def test_invalid_numeric_input_retries(self):
         with patch("builtins.input", side_effect=["abc", "9", "2"]):

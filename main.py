@@ -109,12 +109,19 @@ class QuizGame:
             "quizzes": [quiz.to_dict() for quiz in self.quizzes],
             "best_score": self.best_score,
         }
+        temporary_file = self.state_file.with_name(self.state_file.name + ".tmp")
         try:
-            with self.state_file.open("w", encoding="utf-8") as file:
+            with temporary_file.open("w", encoding="utf-8") as file:
                 json.dump(data, file, ensure_ascii=False, indent=2)
                 file.write("\n")
+                file.flush()
+            temporary_file.replace(self.state_file)
         except OSError as error:
             print("저장 중 오류가 발생했습니다:", error)
+            try:
+                temporary_file.unlink(missing_ok=True)
+            except OSError:
+                pass
 
     @staticmethod
     def read_nonempty(prompt):
