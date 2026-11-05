@@ -97,11 +97,11 @@ class QuizGame:
                 raise ValueError("quizzes 값은 목록이어야 합니다.")
             saved = [Quiz.from_dict(item) for item in raw_quizzes]
             score = int(data.get("best_score", 0))
-            if score < 0 or (saved and score > len(saved)):
-                raise ValueError("최고 점수 값이 퀴즈 수와 맞지 않습니다.")
+            if score < 0:
+                raise ValueError("최고 점수 값은 음수일 수 없습니다.")
             games_played = int(data.get("games_played", 0))
             last_score = int(data.get("last_score", 0))
-            if games_played < 0 or last_score < 0 or (saved and last_score > len(saved)):
+            if games_played < 0 or last_score < 0:
                 raise ValueError("게임 기록 값이 올바르지 않습니다.")
             if saved:
                 self.quizzes = saved

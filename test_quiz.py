@@ -68,10 +68,16 @@ class QuizTests(unittest.TestCase):
 
     def test_quiz_can_be_deleted_after_confirmation(self):
         with tempfile.TemporaryDirectory() as directory:
-            game = QuizGame(Path(directory) / "state.json")
+            state_file = Path(directory) / "state.json"
+            game = QuizGame(state_file)
+            game.best_score = 5
+            game.save_state()
             with patch("builtins.input", side_effect=["2", "y"]):
                 game.delete_quiz()
             self.assertEqual(len(game.quizzes), 4)
+            reloaded = QuizGame(state_file)
+            self.assertEqual(len(reloaded.quizzes), 4)
+            self.assertEqual(reloaded.best_score, 5)
 
     def test_hint_and_correct_answer_update_persistent_scores(self):
         with tempfile.TemporaryDirectory() as directory:
