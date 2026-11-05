@@ -223,11 +223,29 @@ class QuizGame:
         if self.games_played:
             print(f"최근 점수: {self.last_score}문제 정답")
 
+    def delete_quiz(self):
+        if len(self.quizzes) <= 1:
+            print("퀴즈는 최소 한 개 이상 남아 있어야 합니다.")
+            return
+        self.show_quizzes()
+        number = self.read_number("삭제할 퀴즈 번호 (취소는 0): ", 0, len(self.quizzes))
+        if number == 0:
+            print("삭제를 취소했습니다.")
+            return
+        quiz = self.quizzes[number - 1]
+        confirmation = input(f"'{quiz.question}'을 삭제할까요? (y/n): ").strip().lower()
+        if confirmation != "y":
+            print("삭제를 취소했습니다.")
+            return
+        self.quizzes.pop(number - 1)
+        self.save_state()
+        print("퀴즈를 삭제하고 저장했습니다.")
+
     def run(self):
         print("찰리와 초콜릿 공장 이야기 퀴즈")
         while True:
-            print("\n1. 퀴즈 풀기  2. 퀴즈 추가  3. 퀴즈 목록  4. 최고 점수  5. 종료")
-            choice = self.read_number("메뉴 선택 (1-5): ", 1, 5)
+            print("\n1. 퀴즈 풀기  2. 퀴즈 추가  3. 퀴즈 목록  4. 점수 보기  5. 퀴즈 삭제  6. 종료")
+            choice = self.read_number("메뉴 선택 (1-6): ", 1, 6)
             if choice == 1:
                 self.play()
             elif choice == 2:
@@ -236,6 +254,8 @@ class QuizGame:
                 self.show_quizzes()
             elif choice == 4:
                 self.show_score()
+            elif choice == 5:
+                self.delete_quiz()
             else:
                 self.save_state()
                 print("게임을 종료합니다. 다음에 또 만나요!")

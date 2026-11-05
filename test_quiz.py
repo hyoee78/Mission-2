@@ -66,6 +66,13 @@ class QuizTests(unittest.TestCase):
             self.assertIn("복습할 문제", output.getvalue())
             self.assertEqual(game.games_played, 1)
 
+    def test_quiz_can_be_deleted_after_confirmation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            game = QuizGame(Path(directory) / "state.json")
+            with patch("builtins.input", side_effect=["2", "y"]):
+                game.delete_quiz()
+            self.assertEqual(len(game.quizzes), 4)
+
 
 if __name__ == "__main__":
     unittest.main()
