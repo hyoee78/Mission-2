@@ -46,9 +46,15 @@ mission2-quiz/
 - 퀴즈 플레이와 힌트: `docs/screenshots/play.svg`
 - Git 이력: `docs/screenshots/git-log.svg`
 
+![퀴즈 메뉴, 목록, 점수 출력](docs/screenshots/menu-score.svg)
+
+![퀴즈 진행과 힌트 출력](docs/screenshots/play.svg)
+
+![Git 커밋 그래프](docs/screenshots/git-log.svg)
+
 ## Git 학습 기록
 
-기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. 현재 로컬 이력에는 12개의 실제 커밋이 있습니다. GitHub 저장소가 만들어지면 push와 별도 폴더 clone/push/pull을 수행하고 원격 이력을 확인합니다. 현재 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
+기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. 로컬 이력은 기능별 커밋 14개와 병합 기록을 포함합니다. GitHub 저장소가 만들어지면 push와 별도 폴더 clone/push/pull을 수행하고 원격 이력을 확인합니다. 현재 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
 
 ## 확인 범위
 

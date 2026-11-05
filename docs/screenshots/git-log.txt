@@ -1,0 +1,15 @@
+* 61c4d7a (HEAD -> main) Docs: save quiz output records and sample data
+* 23be4b9 Docs: update verification and pending GitHub steps
+* a209268 Fix: preserve scores after quiz removal
+* 2159e18 Test: cover hints and saved score statistics
+* 6faf5a1 Docs: record runtime checks and bonus features
+* e14b8f2 Chore: keep text files consistent across platforms
+*   697da5f Merge: add quiz removal workflow
+|\  
+| * 6f62264 (feature/quiz-removal) Feat: add confirmed quiz deletion
+|/  
+* 6c90128 Feat: show missed answers for review
+* 34f664f Feat: keep play count and recent score
+* 9fd9191 Fix: write saved game data atomically
+* 364cb99 Fix: validate saved quiz structure before loading
+* 9b91a69 Feat: build the quiz game foundation
