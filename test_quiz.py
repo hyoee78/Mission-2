@@ -41,10 +41,13 @@ class QuizTests(unittest.TestCase):
     def test_corrupt_state_falls_back_to_defaults(self):
         with tempfile.TemporaryDirectory() as directory:
             state_file = Path(directory) / "state.json"
-            state_file.write_text("{broken", encoding="utf-8")
-            game = QuizGame(state_file)
-            self.assertEqual(len(game.quizzes), 5)
-            self.assertEqual(game.best_score, 0)
+            broken_values = ["{broken", "[]", '{"quizzes": "not-a-list"}']
+            for broken_value in broken_values:
+                with self.subTest(value=broken_value):
+                    state_file.write_text(broken_value, encoding="utf-8")
+                    game = QuizGame(state_file)
+                    self.assertEqual(len(game.quizzes), 5)
+                    self.assertEqual(game.best_score, 0)
 
 
 if __name__ == "__main__":

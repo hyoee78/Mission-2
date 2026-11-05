@@ -88,10 +88,15 @@ class QuizGame:
         try:
             with self.state_file.open("r", encoding="utf-8") as file:
                 data = json.load(file)
-            saved = [Quiz.from_dict(item) for item in data.get("quizzes", [])]
+            if not isinstance(data, dict):
+                raise ValueError("저장 데이터의 최상위 값은 객체여야 합니다.")
+            raw_quizzes = data.get("quizzes", [])
+            if not isinstance(raw_quizzes, list):
+                raise ValueError("quizzes 값은 목록이어야 합니다.")
+            saved = [Quiz.from_dict(item) for item in raw_quizzes]
             score = int(data.get("best_score", 0))
-            if score < 0:
-                raise ValueError("최고 점수 값이 올바르지 않습니다.")
+            if score < 0 or (saved and score > len(saved)):
+                raise ValueError("최고 점수 값이 퀴즈 수와 맞지 않습니다.")
             if saved:
                 self.quizzes = saved
             self.best_score = score
