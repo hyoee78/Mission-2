@@ -2,6 +2,7 @@
 
 import json
 import random
+import shutil
 from pathlib import Path
 
 
@@ -111,6 +112,18 @@ class QuizGame:
             print("저장된 퀴즈와 최고 점수를 불러왔습니다.")
         except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
             print("저장 파일을 읽을 수 없어 기본 데이터로 시작합니다:", error)
+            if self.state_file.exists():
+                backup_file = self.state_file.with_name(self.state_file.name + ".corrupt")
+                try:
+                    if backup_file.exists():
+                        backup_file = self.state_file.with_name(
+                            self.state_file.name + ".corrupt.previous"
+                        )
+                    shutil.copy2(self.state_file, backup_file)
+                    print(f"손상된 파일을 보존했습니다: {backup_file.name}")
+                except OSError as backup_error:
+                    print("손상된 파일 백업에 실패했습니다:", backup_error)
+            print("기본 문제로 계속할 수 있습니다. 기존 기록은 보존된 파일을 확인하세요.")
 
     def save_state(self):
         data = {
