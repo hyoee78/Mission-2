@@ -1,4 +1,6 @@
-* 61c4d7a (HEAD -> main) Docs: save quiz output records and sample data
+* c5b3778 (HEAD -> main, origin/main) Docs: record the separate clone exercise
+* fa05204 Docs: capture the real Git commit graph
+* 61c4d7a Docs: save quiz output records and sample data
 * 23be4b9 Docs: update verification and pending GitHub steps
 * a209268 Fix: preserve scores after quiz removal
 * 2159e18 Test: cover hints and saved score statistics
