@@ -43,18 +43,24 @@ mission2-quiz/
 아래 이미지는 실제 프로그램 출력과 Git 로그를 SVG로 렌더링한 기록입니다. 이 실행 환경은 데스크톱 화면 캡처를 제공하지 않아 OS 스크린샷은 포함하지 않았습니다.
 
 - 메뉴, 문제 목록 및 점수: `docs/screenshots/menu-score.svg`
+- 문제 추가와 추가 후 목록: `docs/screenshots/add-quiz.svg`
 - 퀴즈 플레이와 힌트: `docs/screenshots/play.svg`
+- 개발환경 버전/원격 설정: `docs/screenshots/environment.svg`
 - Git 이력: `docs/screenshots/git-log.svg`
 
 ![퀴즈 메뉴, 목록, 점수 출력](docs/screenshots/menu-score.svg)
 
 ![퀴즈 진행과 힌트 출력](docs/screenshots/play.svg)
 
+![퀴즈 추가, 목록 및 점수 출력](docs/screenshots/add-quiz.svg)
+
+![개발 환경 확인 출력](docs/screenshots/environment.svg)
+
 ![Git 커밋 그래프](docs/screenshots/git-log.svg)
 
 ## Git 학습 기록
 
-기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. [GitHub 공개 저장소](https://github.com/hyoee78/Mission-2)의 `main`에 push했습니다. 별도 폴더 `work/mission2-clone`에서 README를 수정해 커밋 `c5b3778`로 push했고, 원래 폴더에서 `git pull --ff-only origin main`으로 fast-forward 반영을 확인했습니다. `git init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone` 명령을 실제 사용했습니다. 이 README 갱신을 포함해 `main`에는 17개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
+기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. [GitHub 공개 저장소](https://github.com/hyoee78/Mission-2)의 `main`에 push했습니다. 별도 폴더 `work/mission2-clone`에서 README를 수정해 커밋 `c5b3778`로 push했고, 원래 폴더에서 `git pull --ff-only origin main`으로 fast-forward 반영을 확인했습니다. `git init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone` 명령을 실제 사용했습니다. 이 README 갱신을 포함해 `main`에는 18개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
 
 ## 확인 범위
 

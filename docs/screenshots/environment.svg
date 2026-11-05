@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="190" viewBox="0 0 1280 190">
+<rect width="1280" height="190" rx="18" fill="#111827"/><rect width="1280" height="42" rx="18" fill="#1f2937"/>
+<circle cx="22" cy="21" r="6" fill="#f87171"/><circle cx="43" cy="21" r="6" fill="#fbbf24"/><circle cx="64" cy="21" r="6" fill="#34d399"/>
+<text x="90" y="27" class="title">Verified development environment — captured command output</text>
+<style>.title{font:600 16px -apple-system,BlinkMacSystemFont,sans-serif;fill:#e5e7eb}.line{font:15px Menlo,Monaco,monospace;fill:#d1fae5}</style>
+<text x="28" y="68" class="line">Python 3.12.16</text><text x="28" y="90" class="line">git version 2.54.0 (Apple Git-157)</text><text x="28" y="112" class="line">Git author: Codex Assistant</text><text x="28" y="134" class="line">Branch: main</text><text x="28" y="156" class="line">GitHub remote: https://github.com/hyoee78/Mission-2.git</text></svg>

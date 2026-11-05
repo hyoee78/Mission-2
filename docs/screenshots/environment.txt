@@ -1,0 +1,5 @@
+Python 3.12.16
+git version 2.54.0 (Apple Git-157)
+Git author: Codex Assistant
+Branch: main
+GitHub remote: https://github.com/hyoee78/Mission-2.git
