@@ -73,6 +73,22 @@ class QuizTests(unittest.TestCase):
                 game.delete_quiz()
             self.assertEqual(len(game.quizzes), 4)
 
+    def test_hint_and_correct_answer_update_persistent_scores(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            game = QuizGame(state_file)
+            game.quizzes = default_quizzes()[:1]
+            output = io.StringIO()
+            with patch("random.shuffle", side_effect=lambda questions: None):
+                with patch("builtins.input", side_effect=["h", "1"]), redirect_stdout(output):
+                    game.play()
+            self.assertIn("힌트:", output.getvalue())
+            self.assertIn("정답입니다!", output.getvalue())
+            reloaded = QuizGame(state_file)
+            self.assertEqual(reloaded.best_score, 1)
+            self.assertEqual(reloaded.last_score, 1)
+            self.assertEqual(reloaded.games_played, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
