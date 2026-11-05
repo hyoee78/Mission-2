@@ -1,0 +1,8 @@
+재실행 후 상태 유지 확인 (임시 디렉터리의 state.json 사용)
+
+저장 직후 state.json 요약:
+{"quiz_count": 6, "best_score": 4, "games_played": 3, "last_score": 2}
+
+새 QuizGame으로 다시 읽기:
+저장된 퀴즈와 최고 점수를 불러왔습니다.
+문제 수: 6개, 최고 점수: 4, 플레이 횟수: 3, 최근 점수: 2

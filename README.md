@@ -34,8 +34,10 @@ mission2-quiz/
 ├── state.json
 ├── README.md
 ├── .gitignore
+├── .github/workflows/tests.yml
+├── test_quiz.py
 └── docs/
-    └── screenshots/
+    └── screenshots/  # SVG output renders and captured text logs
 ```
 
 `state.json`은 프로젝트 루트에 있으며 UTF-8 JSON입니다. 사람이 읽고 편집하기 쉽고 Python 외의 도구에서도 다루기 쉬워 과제 규모의 저장 형식으로 선택했습니다. `quizzes` 배열의 각 객체는 질문, 선택지 배열, 정답 번호, 힌트를 담습니다. 이 구조는 문제별 필드와 문제 목록을 명확히 표현하고, 향후 설명이나 태그 같은 필드를 추가하기 쉽습니다. `best_score`에는 한 게임에서 맞힌 최고 문항 수, `games_played`에는 전체 플레이 횟수, `last_score`에는 최근 정답 수가 저장됩니다. 퀴즈를 삭제해도 과거 최고 점수 기록은 유지됩니다. 처음 실행할 때 파일이 없으면 기본 문제 5개를 사용합니다.
@@ -88,6 +90,7 @@ state.json → JSON 파싱 → Quiz 검증 → QuizGame 상태
 - 퀴즈 플레이와 힌트: `docs/screenshots/play.svg`
 - 개발환경 버전/원격 설정: `docs/screenshots/environment.svg`
 - Git 이력: `docs/screenshots/git-log.svg`
+- 테스트 결과와 사용자 입력/상태 복구 로그: `docs/screenshots/*.txt`
 
 ![퀴즈 메뉴, 목록, 점수 출력](docs/screenshots/menu-score.svg)
 
@@ -103,12 +106,20 @@ state.json → JSON 파싱 → Quiz 검증 → QuizGame 상태
 
 기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. 기능을 격리해 작업하고 확인 후 합치기 위해 브랜치를 사용했습니다. 이 연습 저장소에서는 기능 완료 후 `main`으로 병합하며, 기능 브랜치 작업은 병합 커밋으로 남깁니다. [GitHub 공개 저장소](https://github.com/hyoee78/Mission-2)의 `main`에 push했습니다. 별도 폴더 `work/mission2-clone`에서 README를 수정해 커밋 `c5b3778`로 push했고, 원래 폴더에서 `git pull --ff-only origin main`으로 fast-forward 반영을 확인했습니다. `git init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone` 명령을 실제 사용했습니다.
 
-커밋은 한 목적의 변경만 담고, 제목은 `type: 간결한 동사형 요약` 형식을 사용합니다(예: `feat: 퀴즈 삭제 메뉴 추가`, `docs: 실행 방법 설명`). 본문은 이유나 중요한 구현 선택이 제목만으로 분명하지 않을 때 덧붙입니다. 기능 브랜치는 `feature/<기능>`으로 이름 붙입니다. 이 평가 보완 커밋을 포함해 `main`에는 19개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
+커밋은 한 목적의 변경만 담고, 제목은 `type: 간결한 동사형 요약` 형식을 사용합니다(예: `feat: 퀴즈 삭제 메뉴 추가`, `docs: 실행 방법 설명`). 본문은 이유나 중요한 구현 선택이 제목만으로 분명하지 않을 때 덧붙입니다. 기능 브랜치는 `feature/<기능>`으로 이름 붙입니다. 현재 `main`에는 20개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
 
 ## 확인 범위
 
-Python 3.12.16에서 8개 자동 점검이 통과했습니다 (`python3.12 -m unittest -v`). 테스트는 기본 문제 구성, 입력 검증, 손상된 JSON 복구, 저장 후 재실행, 힌트, 오답 복습, 퀴즈 삭제를 다룹니다. 프로그램 출력과 Git 로그는 SVG 및 텍스트로 저장했습니다. 이 환경에서는 OS 화면 캡처를 만들 수 없어 데스크톱 스크린샷은 포함하지 않았습니다.
+Python 3.12.16에서 9개 자동 점검이 통과했습니다 (`python3.12 -m unittest -v`). 테스트는 기본 문제 구성, 입력 검증, 손상된 JSON 복구와 원본 백업, 저장 후 재실행, 힌트, 오답 복습, 퀴즈 삭제를 다룹니다. 프로그램 출력과 Git 로그는 SVG 및 텍스트로 저장했습니다. 이 환경에서는 OS 화면 캡처를 만들 수 없어 데스크톱 스크린샷은 포함하지 않았습니다.
 
 ## Clone 실습 기록
 
 이 문장은 GitHub 저장소를 별도 디렉터리에 `git clone`한 뒤 복제본에서 추가했습니다.
+
+## 자동 점검 및 추가 증거
+
+GitHub Actions는 `main`으로의 push와 pull request에서 Python 3.12로 `python -m unittest -v`를 실행합니다. 현재 로컬 실행은 9개 테스트가 모두 통과했습니다. [실행 로그](docs/screenshots/test-results.txt)
+
+사용자 관점의 재실행 확인은 임시 `state.json`에 6개 문제와 점수 기록을 저장하고 새 `QuizGame`으로 다시 읽어 같은 값이 출력되는 것을 확인했습니다([상태 재읽기 로그](docs/screenshots/state-reload.txt)). 빈 입력, 문자가 섞인 값, 범위를 벗어난 값에 대한 안내도 별도 기록했습니다([입력 검증 로그](docs/screenshots/validation-errors.txt)).
+
+원격 접근은 `git ls-remote origin refs/heads/main` 결과에서 확인할 수 있습니다([원격 참조 로그](docs/screenshots/remote-repository.txt)). 새 임시 폴더로 저장소를 복제한 후 `git pull --ff-only origin main`을 실행한 실제 출력도 남겼습니다([clone/pull 로그](docs/screenshots/clone-pull.txt)). 기존 SVG 이미지는 실행 결과와 로그를 렌더링한 자료이며 데스크톱 화면을 직접 캡처한 이미지가 아닙니다.

@@ -1,0 +1,37 @@
+$ ../../work/python-install/cpython-3.12-macos-aarch64-none/bin/python3.12 -m unittest -v
+test_corrupt_state_falls_back_to_defaults (test_quiz.QuizTests.test_corrupt_state_falls_back_to_defaults) ... ok
+test_corrupt_state_is_preserved_for_recovery (test_quiz.QuizTests.test_corrupt_state_is_preserved_for_recovery) ... ok
+test_default_questions_are_valid_four_choice_quizzes (test_quiz.QuizTests.test_default_questions_are_valid_four_choice_quizzes) ... ok
+test_hint_and_correct_answer_update_persistent_scores (test_quiz.QuizTests.test_hint_and_correct_answer_update_persistent_scores) ... ok
+test_invalid_numeric_input_retries (test_quiz.QuizTests.test_invalid_numeric_input_retries) ... ok
+test_quiz_can_be_deleted_after_confirmation (test_quiz.QuizTests.test_quiz_can_be_deleted_after_confirmation) ... ok
+test_quiz_rejects_invalid_answer (test_quiz.QuizTests.test_quiz_rejects_invalid_answer) ... ok
+test_score_and_questions_survive_restart (test_quiz.QuizTests.test_score_and_questions_survive_restart) ... ok
+test_wrong_answer_is_shown_in_review (test_quiz.QuizTests.test_wrong_answer_is_shown_in_review) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.004s
+
+OK
+저장 파일을 읽을 수 없어 기본 데이터로 시작합니다: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+손상된 파일을 보존했습니다: state.json.corrupt
+기본 문제로 계속할 수 있습니다. 기존 기록은 보존된 파일을 확인하세요.
+저장 파일을 읽을 수 없어 기본 데이터로 시작합니다: 저장 데이터의 최상위 값은 객체여야 합니다.
+손상된 파일을 보존했습니다: state.json.corrupt.previous
+기본 문제로 계속할 수 있습니다. 기존 기록은 보존된 파일을 확인하세요.
+저장 파일을 읽을 수 없어 기본 데이터로 시작합니다: quizzes 값은 목록이어야 합니다.
+손상된 파일을 보존했습니다: state.json.corrupt.previous
+기본 문제로 계속할 수 있습니다. 기존 기록은 보존된 파일을 확인하세요.
+저장된 퀴즈와 최고 점수를 불러왔습니다.
+숫자로 입력해 주세요.
+1부터 5 사이의 숫자를 입력해 주세요.
+
+등록된 퀴즈: 5개
+1. 찰리가 찾은 마지막 황금 티켓은 무엇을 위한 초대장이었나요?
+2. 찰리와 함께 공장을 둘러본 가족은 누구인가요?
+3. 바이올렛 뷰리가드가 실험용 껌을 씹은 뒤 어떤 모습으로 변했나요?
+4. 버루카 솔트가 다람쥐들에게 다가간 뒤 벌어진 일은 무엇인가요?
+5. 마이크 티비가 공장에서 작아진 계기는 무엇인가요?
+퀴즈를 삭제하고 저장했습니다.
+저장된 퀴즈와 최고 점수를 불러왔습니다.
+저장된 퀴즈와 최고 점수를 불러왔습니다.

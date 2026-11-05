@@ -56,6 +56,19 @@ class QuizTests(unittest.TestCase):
                     self.assertEqual(len(game.quizzes), 5)
                     self.assertEqual(game.best_score, 0)
 
+    def test_corrupt_state_is_preserved_for_recovery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            original = "{broken state"
+            state_file.write_text(original, encoding="utf-8")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                game = QuizGame(state_file)
+            backup_file = state_file.with_name("state.json.corrupt")
+            self.assertEqual(backup_file.read_text(encoding="utf-8"), original)
+            self.assertEqual(len(game.quizzes), 5)
+            self.assertIn("손상된 파일을 보존했습니다", output.getvalue())
+
     def test_wrong_answer_is_shown_in_review(self):
         with tempfile.TemporaryDirectory() as directory:
             game = QuizGame(Path(directory) / "state.json")

@@ -1,0 +1,10 @@
+$ git clone https://github.com/hyoee78/Mission-2.git <temporary-dir>/Mission-2
+Cloning into '/private/tmp/mission2-clone.uTPsqc/Mission-2'...
+
+$ git -C <temporary-dir>/Mission-2 pull --ff-only origin main
+From https://github.com/hyoee78/Mission-2
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+$ git -C <temporary-dir>/Mission-2 log -1 --oneline
+d8436f3 docs: 평가 피드백 반영 및 손상 파일 백업
