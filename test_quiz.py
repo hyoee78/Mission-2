@@ -25,11 +25,15 @@ class QuizTests(unittest.TestCase):
             state_file = Path(directory) / "state.json"
             game = QuizGame(state_file)
             game.best_score = 4
+            game.games_played = 3
+            game.last_score = 2
             game.quizzes.append(Quiz("추가 문제", ["가", "나", "다", "라"], 2))
             game.save_state()
 
             reloaded = QuizGame(state_file)
             self.assertEqual(reloaded.best_score, 4)
+            self.assertEqual(reloaded.games_played, 3)
+            self.assertEqual(reloaded.last_score, 2)
             self.assertEqual(len(reloaded.quizzes), 6)
             saved = json.loads(state_file.read_text(encoding="utf-8"))
             self.assertEqual(saved["best_score"], 4)

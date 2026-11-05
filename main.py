@@ -80,6 +80,8 @@ class QuizGame:
         self.state_file = Path(state_file)
         self.quizzes = default_quizzes()
         self.best_score = 0
+        self.games_played = 0
+        self.last_score = 0
         self.load_state()
 
     def load_state(self):
@@ -97,9 +99,15 @@ class QuizGame:
             score = int(data.get("best_score", 0))
             if score < 0 or (saved and score > len(saved)):
                 raise ValueError("최고 점수 값이 퀴즈 수와 맞지 않습니다.")
+            games_played = int(data.get("games_played", 0))
+            last_score = int(data.get("last_score", 0))
+            if games_played < 0 or last_score < 0 or (saved and last_score > len(saved)):
+                raise ValueError("게임 기록 값이 올바르지 않습니다.")
             if saved:
                 self.quizzes = saved
             self.best_score = score
+            self.games_played = games_played
+            self.last_score = last_score
             print("저장된 퀴즈와 최고 점수를 불러왔습니다.")
         except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
             print("저장 파일을 읽을 수 없어 기본 데이터로 시작합니다:", error)
@@ -108,6 +116,8 @@ class QuizGame:
         data = {
             "quizzes": [quiz.to_dict() for quiz in self.quizzes],
             "best_score": self.best_score,
+            "games_played": self.games_played,
+            "last_score": self.last_score,
         }
         temporary_file = self.state_file.with_name(self.state_file.name + ".tmp")
         try:
@@ -176,6 +186,8 @@ class QuizGame:
                 break
         percent = round(score / len(questions) * 100)
         print(f"\n결과: {len(questions)}문제 중 {score}문제 정답 ({percent}점)")
+        self.games_played += 1
+        self.last_score = score
         if score > self.best_score:
             self.best_score = score
             print("새로운 최고 점수입니다!")
@@ -201,6 +213,9 @@ class QuizGame:
             print("아직 기록된 점수가 없습니다. 퀴즈에 도전해 보세요!")
         else:
             print(f"최고 점수: {self.best_score}문제 정답")
+        print(f"플레이 횟수: {self.games_played}회")
+        if self.games_played:
+            print(f"최근 점수: {self.last_score}문제 정답")
 
     def run(self):
         print("찰리와 초콜릿 공장 이야기 퀴즈")
