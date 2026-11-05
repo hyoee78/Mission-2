@@ -1,4 +1,5 @@
-* c5b3778 (HEAD -> main, origin/main) Docs: record the separate clone exercise
+* 85579e8 (HEAD -> main, origin/main) Docs: record successful GitHub clone and pull
+* c5b3778 Docs: record the separate clone exercise
 * fa05204 Docs: capture the real Git commit graph
 * 61c4d7a Docs: save quiz output records and sample data
 * 23be4b9 Docs: update verification and pending GitHub steps

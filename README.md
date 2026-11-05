@@ -5,9 +5,9 @@
 ## 실행 환경 및 방법
 
 - 과제 기준: Python 3.10 이상 (표준 라이브러리만 사용)
-- 프로젝트 폴더에서 실행: `python3 main.py`
-- 자동 점검: `python3 -m unittest -v`
-- 현재 작업 환경은 Python 3.9.6이라 이 환경에서 실행과 7개 점검을 확인했습니다. 제출 전에 Python 3.10 이상에서도 같은 명령을 실행해 확인해야 합니다.
+- 프로젝트 폴더에서 실행: `python3.12 main.py` (Python 3.10 이상이면 해당 버전 명령 사용)
+- 자동 점검: `python3.12 -m unittest -v`
+- 현재 Mac 기본 `python3`는 3.9.6입니다. Python 3.12.16을 작업 폴더에 격리 설치해 이 미션을 Python 3.10 이상 조건으로 실행하고 확인했습니다.
 
 ## 기능
 
@@ -54,11 +54,11 @@ mission2-quiz/
 
 ## Git 학습 기록
 
-기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. [GitHub 공개 저장소](https://github.com/hyoee78/Mission-2)의 `main`에 push했습니다. 별도 폴더 `work/mission2-clone`에서 README를 수정해 커밋 `c5b3778`로 push했고, 원래 폴더에서 `git pull --ff-only origin main`으로 fast-forward 반영을 확인했습니다. README 갱신 커밋을 포함해 `main`에는 16개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
+기능 브랜치 `feature/quiz-removal`에서 퀴즈 삭제를 구현하고 `main`에 병합했습니다. [GitHub 공개 저장소](https://github.com/hyoee78/Mission-2)의 `main`에 push했습니다. 별도 폴더 `work/mission2-clone`에서 README를 수정해 커밋 `c5b3778`로 push했고, 원래 폴더에서 `git pull --ff-only origin main`으로 fast-forward 반영을 확인했습니다. `git init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone` 명령을 실제 사용했습니다. 이 README 갱신을 포함해 `main`에는 17개 커밋이 있습니다. 커밋 작성자는 변경을 수행한 Codex Assistant로 표시됩니다.
 
 ## 확인 범위
 
-현재 8개 자동 점검이 통과했습니다 (`python3 -m unittest -v`). 테스트는 기본 문제 구성, 입력 검증, 손상된 JSON 복구, 저장 후 재실행, 힌트, 오답 복습, 퀴즈 삭제를 다룹니다. 사용 가능한 Python은 3.9.6이므로 미션 기준 3.10+에서 재검증해야 합니다. 프로그램 출력과 Git 로그는 SVG 및 텍스트로 저장했습니다. 이 환경에서는 OS 화면 캡처를 만들 수 없어 데스크톱 스크린샷은 포함하지 않았습니다.
+Python 3.12.16에서 8개 자동 점검이 통과했습니다 (`python3.12 -m unittest -v`). 테스트는 기본 문제 구성, 입력 검증, 손상된 JSON 복구, 저장 후 재실행, 힌트, 오답 복습, 퀴즈 삭제를 다룹니다. 프로그램 출력과 Git 로그는 SVG 및 텍스트로 저장했습니다. 이 환경에서는 OS 화면 캡처를 만들 수 없어 데스크톱 스크린샷은 포함하지 않았습니다.
 
 ## Clone 실습 기록
 
